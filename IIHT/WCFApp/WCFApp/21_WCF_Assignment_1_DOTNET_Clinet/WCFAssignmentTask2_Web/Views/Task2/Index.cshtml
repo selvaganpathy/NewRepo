@@ -1,0 +1,50 @@
+﻿@model WCFAssignmentTask2_Web.Task
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<div>
+    <span>Enter Role Name :</span>
+    <span> <input type="text" value="" id="role" /></span>
+</div>
+<br />
+<br />
+<div>
+    @*<input type="button" value="Http Request" onclick="location.href='@Url.Action("GetRole", "Task2")?role=document.getElementById('role').value'" />*@
+    <input type="button" value="Http Request" onclick="location.href='@Url.Action("GetRole", "Task2")?role=' + document.getElementById('role').value" />
+</div>
+
+@if (Model != null)
+{
+    <h3>Job Opening 
+    
+     </h3>
+    <hr />
+    <ul>
+        @foreach (string str in Model.lstJobOpening)
+        {
+            <li>@str</li>
+        }
+
+    </ul>
+}
+@if (Model != null)
+{
+    <h3>Job Opening By Role
+    @if (Model != null)
+    {
+        <span>-</span>
+        @Model.strRoleName;
+    }
+    </h3>
+
+
+    <hr />
+    <ul>
+        @foreach (string str in Model.lstJobOpeningByRole)
+        {
+            <li>@str</li>
+        }
+    </ul>
+}

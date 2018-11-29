@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Simple Calculator</h2>
+<hr />
+<style>
+    .result {
+        padding: 13px 24px 14px 13px;
+        border: 5px solid;
+        border-color: cadetblue;
+        margin: 29px 10px 10px 10px;
+    }
+</style>
+<div>
+    <span>Enter Number 1 :</span>
+    <span> <input type="text" value="" id="num1" /></span>
+</div>
+<br />
+<div>
+    <span>Enter Number 2 :</span>
+    <span> <input type="text" value="" id="num2" /></span>
+</div>
+<br />
+<input type="button" value="Add" onclick="location.href='@Url.Action("Add", "SimpleCalculator")?num1='+document.getElementById('num1').value +'&num2=' + document.getElementById('num2').value" />
+<input type="button" value="Subtract" onclick="location.href='@Url.Action("Subtract", "SimpleCalculator")?num1='+document.getElementById('num1').value +'&num2=' + document.getElementById('num2').value" />
+<input type="button" value="Multiply" onclick="location.href='@Url.Action("Multiply", "SimpleCalculator")?num1='+document.getElementById('num1').value +'&num2=' + document.getElementById('num2').value" />
+<input type="button" value="Divide" onclick="location.href='@Url.Action("Divide", "SimpleCalculator")?num1='+document.getElementById('num1').value +'&num2=' + document.getElementById('num2').value" />
+
+@if (@ViewBag.strResult > 0)
+{
+    <div class="result">
+        The Result is : <b>@ViewBag.strResult</b>
+    </div>
+}
+

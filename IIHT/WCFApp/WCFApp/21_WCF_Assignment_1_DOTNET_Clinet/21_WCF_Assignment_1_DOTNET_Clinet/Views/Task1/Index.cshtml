@@ -1,0 +1,30 @@
+﻿@model _21_WCF_Assignment_1_DOTNET_Clinet.Task1
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>WCF Task 1 </h2>
+
+<input type="button" value="Http Request" onclick="location.href='@Url.Action("Index", "Task1")?id=1'" />
+<input type="button" value="Net TCP Request" onclick="location.href='@Url.Action("Index", "Task1")?id=2'" />
+<table>
+    <tr>
+        <td>
+            @if (!string.IsNullOrEmpty(ViewBag.Type1))
+            {
+                <label> @ViewBag.Type1 :</label>
+            }
+        </td>
+        <td>@Model.SayHello </td>
+    </tr>
+    <tr>
+        <td>
+            @if (!string.IsNullOrEmpty(ViewBag.Type2))
+            {
+                <label> @ViewBag.Type2 :</label>
+            }
+        </td>
+        <td>@Model.TodayProgram </td>
+    </tr>
+</table>

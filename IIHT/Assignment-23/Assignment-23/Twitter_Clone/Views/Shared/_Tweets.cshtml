@@ -1,0 +1,50 @@
+﻿@model TweetViewModel
+<div class="form-group text-left col-md-12">
+    @Html.ValidationSummary(false)
+    <label for="exampleTextarea  text-left">What are you doing?</label>
+</div>
+<div class="form-group text-left">
+    @Html.TextAreaFor(a => a.TweetMessageViewModel.TweetMessage, new { @class = "form-control", id = "exampleTextarea", rows = "3" })
+    @Html.HiddenFor(a => a.TweetMessageViewModel.userid)
+    @Html.HiddenFor(a => a.TweetMessageViewModel.TweetId)
+</div>
+<div class="text-right">
+    <input class="btn btn-primary" type="submit" value="Tweet" />
+</div>
+<br />
+<br />
+<br />
+
+<div class="form-group">
+    <table class="table">
+        @foreach (var item in Model.TweetsViewModel)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TweetMessage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                @if (item.isUserTweet)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "EditTweet", new { tweetId = item.TweetId }) |
+                        @Html.ActionLink("Delete", "DeleteTweet", new { tweetId = item.TweetId })
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+
+            </tr>
+        }
+
+    </table>
+</div>
+
+

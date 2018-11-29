@@ -1,0 +1,87 @@
+﻿@model LoginModel
+@{
+    ViewBag.Title = "Twitter Clone";
+}
+<style>
+    fieldset.scheduler-border {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+
+    legend.scheduler-border {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+
+    .borderless tr td {
+        border: none !important;
+        vertical-align: middle !important;
+    }
+
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+        .alert-danger hr {
+            border-top-color: #e4b9c0;
+        }
+
+        .alert-danger .alert-link {
+            color: #843534;
+        }
+</style>
+
+<div class="container container-table">
+    <div class="row vertical-center-row">
+        <div class="text-center col-md-6 col-md-offset-3"><h1>Welcome to My Twitter Clone</h1></div>
+    </div>
+</div>
+@using (Html.BeginForm("Login", "TwitterClone", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="col-md-4 col-md-offset-4">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Login</legend>
+                    <div class="alert-danger">
+                        @Html.ValidationSummary(false)
+                    </div>
+                    <table class="table borderless">
+                        <tr>
+                            <td><label>UserName</label></td>
+                            <td>@Html.TextBoxFor(a => a.UserName, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>PassWord</label>
+                            </td>
+                            <td>
+                                @Html.PasswordFor(a => a.PassWord, new { @class = "form-control" })
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-right"><input class="btn btn-primary" type="submit" value="Login" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">New User? @Html.ActionLink("Sign Up", "signUp")</td>
+                        </tr>
+                    </table>
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+}
